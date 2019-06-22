@@ -9,11 +9,20 @@ namespace Sharp_Localization
         private static ConsolePrinter _printer = new ConsolePrinter(100);
         static void Main(string[] args)
         {
+            PrintAllCultures();
+        }
+
+        /// <summary>
+        /// Prints all cultures to console
+        /// </summary>
+        private static void PrintAllCultures()
+        {
+            // Print table header
             _printer.PrintLine();
             _printer.PrintRow(new string[] { "Code", "English Name", "Type" });
             _printer.PrintLine();
 
-            // Print all cultures to console.
+            // Get all cultures and loop through them.
             var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
             foreach (var ci in allCultures)
             {
@@ -35,3 +44,7 @@ namespace Sharp_Localization
         }
     }
 }
+
+/*
+https://docs.microsoft.com/en-us/bingmaps/rest-services/common-parameters-and-types/supported-culture-codes
+ */
