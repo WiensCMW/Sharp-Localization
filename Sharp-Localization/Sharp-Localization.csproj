@@ -6,4 +6,7 @@
     <RootNamespace>Sharp_Localization</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
 </Project>
