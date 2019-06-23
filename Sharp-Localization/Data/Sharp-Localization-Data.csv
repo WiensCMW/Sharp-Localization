@@ -1,7 +1,19 @@
 en-CA,en-US,es-MX,zh-Hans
-Home,Home,Casa,家
-Parts,Parts,Partes,部分
-Operate,Operate,Funcionar,操作
-"You have unsaved data, continue?","You have unsaved data, continue?","Usted tiene datos no guardados, continuar?",您有未保存的数据，继续？
-"j(*&((^%#$#"":?><,./;'[]\=-0!@#$%^&*())_+_)(*"""""""""",,,,,","j(*&((^%#$#"":?><,./;'[]\=-0!@#$%^&*())_+_)(*"""""""""",,,,,","j(*&((^%#$#"":?><,./;'[]\=-0!@#$%^&*())_+_)(*"""""""""",,,,,","j(*&((^%#$#"":?><,./;'[]\=-0!@#$%^&*())_+_)(*"""""""""",,,,,"
-Labour,Labor,Labor,劳工
+App,App,Aplicación,应用
+Version,Version,Versión,版
+Current Culture is,CurrentCulture is,La cultura actual es,现在的文化是
+Commands,Commands,Comandos,命令
+Change Language,Change Language,Cambiar idioma,改变语言
+Prints list of Localized Strings,Prints list of Localized Strings,Imprime lista de cadenas localizadas,打印本地化字符串列表
+Prints list of system cultures,Prints list of system cultures,Imprime lista de culturas del sistema,打印系统文化列表
+Localize input string,Localize input string,Localizar cadena de entrada,本地化输入字符串
+Exits App,Exits App,App de salidas,退出应用程序
+Input,Input,Entrada,输入
+Exiting App,Exiting App,Saliendo de la aplicación,退出应用程序
+Press any key to continue,Press any key to continue,Pulse cualquier tecla para continuar,按任意键继续
+Enter word to localize (Enter cancel to cancel and go back),Enter word to localize (Enter cancel to cancel and go back),Ingrese la palabra para localizar (Ingrese cancelar para cancelar y regresar),输入要本地化的单词（输入取消取消并返回）
+Native String,Native String,Cadena nativa,原生字符串
+Localized String,Localized String,Cadena localizada,本地化字符串
+Enter culture code,Enter culture code,Introduce el código de cultura,输入文化代码
+Invalid culture code.,Invalid culture code.,Código de cultura no válido.,文化代码无效。
+To go back enter,To go back enter,Volver atrás entrar,要回去了
