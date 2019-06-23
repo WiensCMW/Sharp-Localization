@@ -1,4 +1,0 @@
-﻿namespace Sharp_Localization
-{
-
-}
