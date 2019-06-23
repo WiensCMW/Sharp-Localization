@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
@@ -15,7 +16,33 @@ namespace Sharp_Localization
 
             //PrintAllCultures();
 
+            // Print loaded values
+            _printer.PrintLine();
+            List<string> hdr = new List<string>();
+            foreach (KeyValuePair<string, List<CSLanguageData>> item in _language.CSLanguageList)
+            {
+                hdr.Add("Name");
+                for (int i = 0; i < item.Value.Count; i++)
+                {
+                    hdr.Add(item.Value[i].CultureCode);
+                }
+                break;
+            }
+            _printer.PrintRow(hdr.ToArray());
+            _printer.PrintLine();
 
+            foreach (KeyValuePair<string, List<CSLanguageData>> item in _language.CSLanguageList)
+            {
+                List<string> langValues = new List<string>();
+                langValues.Add(item.Key);
+
+                for (int i = 0; i < item.Value.Count; i++)
+                {
+                    langValues.Add(item.Value[i].Value.Trim());
+                }
+
+                _printer.PrintRow(langValues.ToArray());
+            }
         }
 
         /// <summary>
