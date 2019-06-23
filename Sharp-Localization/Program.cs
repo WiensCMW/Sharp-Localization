@@ -44,6 +44,7 @@ namespace Sharp_Localization
                 Console.WriteLine("change\tChange Language");
                 Console.WriteLine("print\tPrints list of Localized Strings");
                 Console.WriteLine("print c\tPrints list of system cultures");
+                Console.WriteLine("loc\tLocalize input string");
                 Console.WriteLine("exit\tExits App");
 
                 _printer.PrintLine();
@@ -121,17 +122,16 @@ namespace Sharp_Localization
                     }
                 case "loc":
                     {
+                        Console.WriteLine("Enter word to localize (Enter cancel to cancel and go back):");
                         while (true)
                         {
-                            Console.WriteLine("Enter word to localize (Enter cancel to cancel and go back):");
                             string inputStr = Console.ReadLine();
                             if (!string.IsNullOrEmpty(inputStr) && inputStr.ToLower() == "cancel")
                                 break;
                             else
                             {
                                 string localized = _language.GetLocalizedString(inputStr);
-                                Console.WriteLine($"Localized String: {localized}");
-                                Console.ReadKey();
+                                Console.WriteLine($"Native String: {inputStr}, Localized String: {localized}");
                             }
                         }
                         break;
