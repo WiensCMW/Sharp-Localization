@@ -130,40 +130,65 @@ namespace Sharp_Localization
 
             try
             {
-                // Read data from CSV file
+                // Read data from CSV file into List<List> object
+                List<List<string>> parsedCSVRows = new List<List<string>>();
                 using (CsvFileReader reader = new CsvFileReader(dataFilePath))
                 {
                     CsvRow csvRow = new CsvRow();
-                    List<string> hdrRow = new List<string>();
 
                     while (reader.ReadRow(csvRow))
                     {
-                        // Read the header row into list
-                        if (hdrRow.Count == 0)
+                        // Collect csvRows elements into list, then add that list to another list
+                        List<string> csvRowElements = new List<string>();
+                        for (int i = 0; i < csvRow.Count; i++)
+                            csvRowElements.Add(csvRow[i]);
+                        parsedCSVRows.Add(csvRowElements);
+                    }
+                }
+
+                // Validate parsed data
+                // Get the first row to validate the header data
+                List<int> colCount = new List<int>();
+                for (int i = 0; i < parsedCSVRows.Count; i++)
+                    colCount.Add(parsedCSVRows[i].Count);
+
+                /* Make sure that all parsed rows have the same column count. If some don't, it means
+                 * we have missing columns. So we abort and return false. */
+                if (colCount.Distinct().ToList().Count > 1)
+                {
+                    return false;
+                }
+
+                // Loop through parsed list to process and collect into local Dictionary
+                List<string> hdrRow = new List<string>();
+                for (int i = 0; i < parsedCSVRows.Count; i++)
+                {
+                    // Read the header row into list
+                    if (hdrRow.Count == 0)
+                    {
+                        foreach (string s in parsedCSVRows[i])
+                            hdrRow.Add(s);
+                    }
+                    else
+                    {
+                        List<CSLanguageData> parsedLanguageList = new List<CSLanguageData>();
+                        string nativeLanguageKey = "";
+
+                        // Read row elements
+                        for (int x = 0; x < parsedCSVRows[i].Count; x++)
                         {
-                            foreach (string s in csvRow)
-                                hdrRow.Add(s);
+                            /* Row element 0 is always the row's native language value, so we read that into a string which
+                             * will become the Dictionary's key value. */
+                            if (x == 0)
+                                nativeLanguageKey = parsedCSVRows[i][x];
+
+                            /* Read row element into CSLanguageData List */
+                            parsedLanguageList.Add(new CSLanguageData(hdrRow[x], parsedCSVRows[i][x]));
                         }
-                        else
-                        {
-                            List<CSLanguageData> parsedLanguageList = new List<CSLanguageData>();
-                            string nativeLanguageKey = "";
 
-                            // Read row elements
-                            for (int i = 0; i < csvRow.Count; i++)
-                            {
-                                /* Row element 0 is always the row's native language value, so we read that into a string which
-                                 * will become the Dictionary's key value. */
-                                if (i == 0)
-                                    nativeLanguageKey = csvRow[i];
-
-                                /* Read row element into CSLanguageData List */
-                                parsedLanguageList.Add(new CSLanguageData(hdrRow[i], csvRow[i]));
-                            }
-
-                            // Add row's Name and values into dictionary
+                        // Add row's Name and values into dictionary, but only if the key doesn't already exist
+                        if (!CSLanguageList.Keys.Contains(nativeLanguageKey))
                             CSLanguageList.Add(nativeLanguageKey, parsedLanguageList);
-                        }
                     }
                 }
 
@@ -283,6 +308,9 @@ namespace Sharp_Localization
         /// <param name="columns">The elements you want to print</param>
         public void PrintRow(params string[] columns)
         {
+            if (columns == null || columns.Length == 0)
+                return;
+
             int width = (TableWidth - columns.Length) / columns.Length;
             string row = "|";
 
