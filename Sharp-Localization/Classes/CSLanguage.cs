@@ -37,9 +37,21 @@ namespace Sharp_Localization
         /// <returns></returns>
         public string GetLocalizedString(string nativeString)
         {
+            // Search for dictionary entry for passed in native string. If nothing is found, return passed in native string.
+            var foundDicEntry = CSLanguageList.FirstOrDefault(x => x.Key == nativeString);
+            if (foundDicEntry.Key == null)
+                return nativeString;
 
-            // Returns the passed in native string if no localized entry was found.
-            return nativeString;
+            // Gets the culture code. If no code is selected, it gets the CultureInfo's current culture name.
+            string cultureCode = (!string.IsNullOrEmpty(_currentCultureCode)) ? _currentCultureCode : CultureInfo.CurrentCulture.Name;
+
+            // Search for the localized CSLanguageData element. If nothing is found, return passed in native string.
+            CSLanguageData foundData = foundDicEntry.Value.FirstOrDefault(x => x.CultureCode == cultureCode);
+            if (foundData == null)
+                return nativeString;
+
+            // Return found Data's Value if it's not null, else return passed in native string.
+            return (!string.IsNullOrEmpty(foundData.Value)) ? foundData.Value : nativeString;
         }
 
         /// <summary>

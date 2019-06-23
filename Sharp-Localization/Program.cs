@@ -119,6 +119,23 @@ namespace Sharp_Localization
                         Console.ReadKey();
                         break;
                     }
+                case "loc":
+                    {
+                        while (true)
+                        {
+                            Console.WriteLine("Enter word to localize (Enter cancel to cancel and go back):");
+                            string inputStr = Console.ReadLine();
+                            if (!string.IsNullOrEmpty(inputStr) && inputStr.ToLower() == "cancel")
+                                break;
+                            else
+                            {
+                                string localized = _language.GetLocalizedString(inputStr);
+                                Console.WriteLine($"Localized String: {localized}");
+                                Console.ReadKey();
+                            }
+                        }
+                        break;
+                    }
                 default:
                     break;
             }
@@ -127,7 +144,7 @@ namespace Sharp_Localization
         private static bool ChangeLanguage()
         {
             Console.WriteLine();
-            Console.Write("Enter culture code:");
+            Console.WriteLine("Enter culture code:");
             string input = Console.ReadLine();
 
             // Check if user commanded to cancel
