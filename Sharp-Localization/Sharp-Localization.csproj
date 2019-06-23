@@ -15,4 +15,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Classes\CSLanguageData.cs" />
+    <Compile Remove="Classes\ConsolePrinter.cs" />
+  </ItemGroup>
 </Project>
