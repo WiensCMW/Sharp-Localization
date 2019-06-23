@@ -27,6 +27,7 @@ namespace Sharp_Localization
 
             while (true)
             {
+                #region Print Header to console
                 Console.Clear();
 
                 _printer.PrintLine();
@@ -35,8 +36,8 @@ namespace Sharp_Localization
 
                 // Display the name of the current thread culture.
                 Console.WriteLine("CurrentCulture is {0} ({1}).",
-                    CurrentCultureCode(),
-                    CurrentCultureName());
+                    _language.GetCultureCode(),
+                    _language.GetCultureName());
 
                 // Print available commands:
                 Console.WriteLine("Commands:");
@@ -47,9 +48,7 @@ namespace Sharp_Localization
 
                 _printer.PrintLine();
                 Console.WriteLine();
-
-                //_language.PrintLoadedLanguageData();
-                //_language.PrintAllCultures();
+                #endregion
 
                 #region Get use input
                 Console.Write("Input:");
@@ -70,6 +69,11 @@ namespace Sharp_Localization
             }
         }
 
+        /// <summary>
+        /// Check if input calls for exit
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private static bool ExitApp(string input)
         {
             if (!string.IsNullOrEmpty(input))
@@ -81,12 +85,16 @@ namespace Sharp_Localization
             return false;
         }
 
+        /// <summary>
+        /// Check the input for valid commands and process them
+        /// </summary>
+        /// <param name="input"></param>
         private static void ProcessCMD(string input)
         {
             if (string.IsNullOrEmpty(input))
                 return;
 
-            switch (input)
+            switch (input.ToLower())
             {
                 case "change":
                     {
@@ -116,34 +124,13 @@ namespace Sharp_Localization
             }
         }
 
-        private static string CurrentCultureCode()
-        {
-            return (!string.IsNullOrEmpty(_selectedCultureCode)) ? _selectedCultureCode : CultureInfo.CurrentCulture.Name;
-        }
-
-        private static string CurrentCultureName()
-        {
-            return (!string.IsNullOrEmpty(_selectedCultureCode)) ? _selectedCultureName : CultureInfo.CurrentCulture.DisplayName;
-        }
-
         private static bool ChangeLanguage()
         {
             Console.WriteLine();
             Console.Write("Enter culture code:");
-            string inputCode = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            // Get all cultures and loop through them.
-            CultureInfo[] allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
-            var foundCulture = allCultures.FirstOrDefault(x => x.Name == inputCode);
-            if (foundCulture != null)
-            {
-                Console.WriteLine($"Culture changed to {foundCulture.Name}");
-                _selectedCultureCode = foundCulture.Name;
-                _selectedCultureName = foundCulture.DisplayName;
-                return true;
-            }
-
-            return false;
+            return _language.SetCultureCode(input);
         }
     }
 }

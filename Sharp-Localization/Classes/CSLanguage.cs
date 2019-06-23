@@ -11,14 +11,92 @@ namespace Sharp_Localization
     {
         // Private Variables
         private ConsolePrinter _printer;
+        private string _currentCultureCode = "";
+        private string _currentCultureName = "";
 
         // Public Variables
         public Dictionary<string, List<CSLanguageData>> CSLanguageList = new Dictionary<string, List<CSLanguageData>>();
 
-        public CSLanguage(int printerTableWidth = 80)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="printerTableWidth"></param>
+        public CSLanguage(string cultureCode = "", int printerTableWidth = 80)
         {
             _printer = new ConsolePrinter(printerTableWidth);
+
+            SetCultureCode(cultureCode);
+
             ReadDataFromCSV();
+        }
+
+        /// <summary>
+        /// Returns the localized string for the passed in native string
+        /// </summary>
+        /// <param name="nativeString"></param>
+        /// <returns></returns>
+        public string GetLocalizedString(string nativeString)
+        {
+
+            return nativeString;
+        }
+
+        /// <summary>
+        /// Sets the culture code. If the passed in culture code is invalid, method returns false.
+        /// </summary>
+        /// <param name="cultureCode">The CultureInfo Name (code) you want to use.</param>
+        /// <returns>Returns FALSE if passed in code is invalid.</returns>
+        public bool SetCultureCode(string cultureCode)
+        {
+            var foundCulture = CultureInfo.GetCultures(CultureTypes.AllCultures).FirstOrDefault(x => x.Name == cultureCode);
+            if (foundCulture != null && !string.IsNullOrEmpty(foundCulture.Name))
+            {
+                _currentCultureCode = foundCulture.Name;
+                _currentCultureName = foundCulture.DisplayName;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Gets the culture code for the class. If it wasn't set, it returns the CultureInfo.CurrentCulture.Name
+        /// </summary>
+        /// <returns></returns>
+        public string GetCultureCode()
+        {
+            if (!string.IsNullOrEmpty(_currentCultureCode))
+                return _currentCultureCode;
+            else
+            {
+                var foundCulture = CultureInfo.GetCultures(CultureTypes.AllCultures).FirstOrDefault(x => x.Name == _currentCultureCode);
+                if (foundCulture != null && !string.IsNullOrEmpty(foundCulture.Name))
+                {
+                    return foundCulture.Name;
+                }
+
+                return CultureInfo.CurrentCulture.Name;
+            }
+        }
+
+        /// <summary>
+        /// Returns the culture display name for the class. If it wasn't set, it returns the CultureInfo.CurrentCulture.DisplayName
+        /// </summary>
+        /// <returns></returns>
+        public string GetCultureName()
+        {
+            if (!string.IsNullOrEmpty(_currentCultureName))
+                return _currentCultureName;
+            else
+            {
+                var foundCulture = CultureInfo.GetCultures(CultureTypes.AllCultures).FirstOrDefault(x => x.Name == _currentCultureName);
+                if (foundCulture != null && !string.IsNullOrEmpty(foundCulture.Name))
+                {
+                    return foundCulture.DisplayName;
+                }
+
+                return CultureInfo.CurrentCulture.DisplayName;
+            }
         }
 
         /// <summary>
@@ -87,12 +165,9 @@ namespace Sharp_Localization
             return false;
         }
 
-        public string GetLocalizedString(string nativeString)
-        {
-
-            return nativeString;
-        }
-
+        /// <summary>
+        /// Prints the CSLanguage dictionary keys and values
+        /// </summary>
         public void PrintLoadedLanguageData()
         {
             // Print loaded values
