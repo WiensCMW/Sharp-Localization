@@ -130,7 +130,17 @@ namespace Sharp_Localization
             Console.Write("Enter culture code:");
             string input = Console.ReadLine();
 
-            return _language.SetCultureCode(input);
+            // Check if user commanded to cancel
+            if (!string.IsNullOrEmpty(input) && input.ToLower() == "cancel")
+                return true;
+
+            if (!_language.SetCultureCode(input))
+            {
+                Console.WriteLine("Invalid culture code. (Enter cancel to cancel and go back.)");
+                return false;
+            }
+            else
+                return true;
         }
     }
 }

@@ -38,6 +38,7 @@ namespace Sharp_Localization
         public string GetLocalizedString(string nativeString)
         {
 
+            // Returns the passed in native string if no localized entry was found.
             return nativeString;
         }
 
