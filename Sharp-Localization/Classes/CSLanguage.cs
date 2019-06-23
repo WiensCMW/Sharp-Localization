@@ -87,6 +87,12 @@ namespace Sharp_Localization
             return false;
         }
 
+        public string GetLocalizedString(string nativeString)
+        {
+
+            return nativeString;
+        }
+
         public void PrintLoadedLanguageData()
         {
             // Print loaded values
