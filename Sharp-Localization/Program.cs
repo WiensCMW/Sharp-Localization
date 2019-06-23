@@ -7,9 +7,15 @@ namespace Sharp_Localization
     class Program
     {
         private static ConsolePrinter _printer = new ConsolePrinter(100);
+        private static CSLanguage _language;
+
         static void Main(string[] args)
         {
-            PrintAllCultures();
+            _language = new CSLanguage();
+
+            //PrintAllCultures();
+
+
         }
 
         /// <summary>
@@ -44,7 +50,3 @@ namespace Sharp_Localization
         }
     }
 }
-
-/*
-https://docs.microsoft.com/en-us/bingmaps/rest-services/common-parameters-and-types/supported-culture-codes
- */

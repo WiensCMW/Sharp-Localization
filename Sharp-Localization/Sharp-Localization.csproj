@@ -8,5 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Classes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Data\Sharp-Localization-Data.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
