@@ -1,21 +1,21 @@
-en-CA,en-US,es-MX,zh-Hans
-App,App,Aplicación,应用
-Version,Version,Versión,版
-Current Culture is,CurrentCulture is,La cultura actual es,现在的文化是
-Commands,Commands,Comandos,命令
-Change Language,Change Language,Cambiar idioma,改变语言
-Prints list of Localized Strings,Prints list of Localized Strings,Imprime lista de cadenas localizadas,打印本地化字符串列表
-Prints list of system cultures,Prints list of system cultures,Imprime lista de culturas del sistema,打印系统文化列表
-Localize input string,Localize input string,Localizar cadena de entrada,本地化输入字符串
-Exits App,Exits App,App de salidas,退出应用程序
-Input,Input,Entrada,输入
-Exiting App,Exiting App,Saliendo de la aplicación,退出应用程序
-Press any key to continue,Press any key to continue,Pulse cualquier tecla para continuar,按任意键继续
-Enter word to localize (Enter cancel to cancel and go back),Enter word to localize (Enter cancel to cancel and go back),Ingrese la palabra para localizar (Ingrese cancelar para cancelar y regresar),输入要本地化的单词（输入取消取消并返回）
-Native String,Native String,Cadena nativa,原生字符串
-Localized String,Localized String,Cadena localizada,本地化字符串
-Enter culture code,Enter culture code,Introduce el código de cultura,输入文化代码
-Invalid culture code.,Invalid culture code.,Código de cultura no válido.,文化代码无效。
-To go back enter,To go back enter,Volver atrás entrar,要回去了
-Simulate outside error message,Simulate outside error message,Simular mensaje de error externo,模拟外部错误消息
-Unable to delete Devices that contain Inventory,Unable to delete Devices that contain Inventory,No se pueden eliminar dispositivos que contengan inventario.,无法删除包含部件的设备
+en-CA,en-US,es-MX,fr-CA,zh-Hans
+App,App,Aplicación,App,应用
+Version,Version,Versión,Version,版
+Current Culture is,CurrentCulture is,La cultura actual es,La culture actuelle est,现在的文化是
+Commands,Commands,Comandos,Les commandes,命令
+Change Language,Change Language,Cambiar idioma,Changer de langue,改变语言
+Prints list of Localized Strings,Prints list of Localized Strings,Imprime lista de cadenas localizadas,Imprime la liste des chaînes localisées,打印本地化字符串列表
+Prints list of system cultures,Prints list of system cultures,Imprime lista de culturas del sistema,Imprime la liste des cultures système,打印系统文化列表
+Localize input string,Localize input string,Localizar cadena de entrada,Localiser la chaîne d'entrée,本地化输入字符串
+Exits App,Exits App,App de salidas,Exits App,退出应用程序
+Input,Input,Entrada,Contribution,输入
+Exiting App,Exiting App,Saliendo de la aplicación,Sortie de l'application,退出应用程序
+Press any key to continue,Press any key to continue,Pulse cualquier tecla para continuar,Appuyez sur n'importe quelle touche pour continuer,按任意键继续
+Enter word to localize (Enter cancel to cancel and go back),Enter word to localize (Enter cancel to cancel and go back),Ingrese la palabra para localizar (Ingrese cancelar para cancelar y regresar),Entrez le mot à localiser (Entrez annuler pour annuler et revenir en arrière),输入要本地化的单词（输入取消取消并返回）
+Native String,Native String,Cadena nativa,Chaîne native,原生字符串
+Localized String,Localized String,Cadena localizada,Chaîne localisée,本地化字符串
+Enter culture code,Enter culture code,Introduce el código de cultura,Entrez le code de culture,输入文化代码
+Invalid culture code.,Invalid culture code.,Código de cultura no válido.,Code de culture invalide.,文化代码无效。
+To go back enter,To go back enter,Volver atrás entrar,Pour revenir entrer,要回去了
+Simulate outside error message,Simulate outside error message,Simular mensaje de error externo,Simuler un message d'erreur externe,模拟外部错误消息
+Unable to delete Devices that contain Inventory,Unable to delete Devices that contain Inventory,No se pueden eliminar dispositivos que contengan inventario.,Impossible de supprimer les périphériques contenant l'inventaire,无法删除包含部件的设备
