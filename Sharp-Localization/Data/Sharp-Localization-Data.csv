@@ -17,3 +17,5 @@ Localized String,Localized String,Cadena localizada,本地化字符串
 Enter culture code,Enter culture code,Introduce el código de cultura,输入文化代码
 Invalid culture code.,Invalid culture code.,Código de cultura no válido.,文化代码无效。
 To go back enter,To go back enter,Volver atrás entrar,要回去了
+Simulate outside error message,Simulate outside error message,Simular mensaje de error externo,模拟外部错误消息
+Unable to delete Devices that contain Inventory,Unable to delete Devices that contain Inventory,No se pueden eliminar dispositivos que contengan inventario.,无法删除包含部件的设备

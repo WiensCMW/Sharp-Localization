@@ -8,18 +8,9 @@ namespace Sharp_Localization
 {
     class Program
     {
-        #region Private Variables
+        // Private Variables
         private static ConsolePrinter _printer = new ConsolePrinter(77);
         private static CSLanguage _lang;
-
-        private static string _selectedCultureCode = "";
-        private static string _selectedCultureName = "";
-        #endregion
-
-        #region Public Variables
-        public static string SelectedCultureCode { get { return _selectedCultureCode; } }
-        public static string SelectedCultureName { get { return _selectedCultureName; } }
-        #endregion
 
         static void Main(string[] args)
         {
@@ -43,10 +34,10 @@ namespace Sharp_Localization
                 Console.WriteLine($"change\t{_lang.GetLocalizedString("Change Language")}");
                 Console.WriteLine($"print\t{_lang.GetLocalizedString("Prints list of Localized Strings")}");
                 Console.WriteLine($"print c\t{_lang.GetLocalizedString("Prints list of system cultures")}");
+                Console.WriteLine($"test\t{_lang.GetLocalizedString("Simulate outside error message")}");
                 Console.WriteLine($"exit\t{_lang.GetLocalizedString("Exits App")}");
 
                 _printer.PrintLine();
-                Console.WriteLine();
                 #endregion
 
                 #region Get use input
@@ -118,25 +109,39 @@ namespace Sharp_Localization
                         Console.ReadKey();
                         break;
                     }
+                case "test":
+                    {
+                        string sqlException = "Unable to delete Devices that contain Inventory\r\n Rows Affected: 30";
+                        Console.WriteLine($"{_lang.ReplaceLocalizedString("Unable to delete Devices that contain Inventory", sqlException)}");
+                        Console.WriteLine($"{_lang.GetLocalizedString("Press any key to continue")}...");
+                        Console.ReadKey();
+                        break;
+                    }
                 default:
                     break;
             }
         }
 
+        /// <summary>
+        /// Command to change the selected language.
+        /// </summary>
+        /// <returns>Returns TRUE if the entered culture code was valid.</returns>
         private static bool ChangeLanguage()
         {
-            Console.WriteLine();
-            Console.WriteLine($"{_lang.GetLocalizedString("Enter culture code")}:");
+            // Get new culture code from user
+            Console.Write($"{_lang.GetLocalizedString("Enter culture code")}:");
             string input = Console.ReadLine();
 
             // Check if user commanded to cancel
             if (!string.IsNullOrEmpty(input) && input.ToLower() == "cancel")
                 return true;
 
+            // Attempt to change culture code, if entered code was invalid alert the user
             if (!_lang.SetCultureCode(input))
             {
                 Console.WriteLine($"{_lang.GetLocalizedString("Invalid culture code.")} " +
                     $"({_lang.GetLocalizedString("To go back enter")} cancel)");
+                Console.WriteLine();
                 return false;
             }
             else

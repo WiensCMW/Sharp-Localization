@@ -31,10 +31,11 @@ namespace Sharp_Localization
         }
 
         /// <summary>
-        /// Returns the localized string for the passed in native string
+        /// Returns the localized string for the passed in native string. If no localized string is found,
+        /// the native string is returned.
         /// </summary>
-        /// <param name="nativeString"></param>
-        /// <returns></returns>
+        /// <param name="nativeString">The native string that you want to localize.</param>
+        /// <returns>Returns the localized string for the passed in native string.</returns>
         public string GetLocalizedString(string nativeString)
         {
             // Search for dictionary entry for passed in native string. If nothing is found, return passed in native string.
@@ -52,6 +53,30 @@ namespace Sharp_Localization
 
             // Return found Data's Value if it's not null, else return passed in native string.
             return (!string.IsNullOrEmpty(foundData.Value)) ? foundData.Value : nativeString;
+        }
+
+        /// <summary>
+        /// Replaces the passed in native string with localized string inside the passed in string to search. If
+        /// no localized string is found, the native string is returned.
+        /// </summary>
+        /// <param name="nativeString">The native string that you want to localize.</param>
+        /// <param name="stringToSearch">The string you want to search and replace the native string with a
+        /// localized string.</param>
+        /// <returns>Returns the passed in string to search, with the passed in native string replaced with a
+        /// localized string</returns>
+        public string ReplaceLocalizedString(string nativeString, string stringToSearch)
+        {
+            // Localize the passed in native string
+            string localizedNativeString = GetLocalizedString(nativeString);
+
+            /* Replace the passed in native string with the localized native string inside the
+             * passed in string to search and return the results. But only do this if the
+             * passed in native string was actually localized to something else. Else just return
+             * the passed in search to string. */
+            if (nativeString != localizedNativeString)
+                return stringToSearch.Replace(nativeString, localizedNativeString);
+            else
+                return stringToSearch;
         }
 
         /// <summary>
