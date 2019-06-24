@@ -217,7 +217,7 @@ namespace Sharp_Localization
                     }
                 }
 
-                // Return TRUE if elements were loaded into dictoinary
+                // Return TRUE if elements were loaded into dictionary
                 return CSLanguageList.Count > 0;
             }
             catch (Exception)
