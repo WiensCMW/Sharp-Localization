@@ -14,7 +14,11 @@ namespace Sharp_Localization
 
         static void Main(string[] args)
         {
+            // Instantiate CSLanguage class
             _lang = new CSLanguage();
+
+            // Load localization data
+            _lang.LoadLocalizationData();
 
             while (true)
             {

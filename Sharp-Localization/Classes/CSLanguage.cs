@@ -26,8 +26,6 @@ namespace Sharp_Localization
             _printer = new ConsolePrinter(printerTableWidth);
 
             SetCultureCode(cultureCode);
-
-            ReadDataFromCSV();
         }
 
         /// <summary>
@@ -141,7 +139,7 @@ namespace Sharp_Localization
         /// Reads the language data from the local CSV file and parses results into local dictionary
         /// </summary>
         /// <returns>Returns FALSE if loading failed. </returns>
-        private bool ReadDataFromCSV()
+        public bool LoadLocalizationData()
         {
             // Get path of csv data file
             string dataFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
